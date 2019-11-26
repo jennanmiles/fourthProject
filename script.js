@@ -5,6 +5,7 @@ var timeText = document.querySelector('#timeLeft');
 var highScores = document.querySelector('#highScores');
 var intro = document.querySelector('.introWrapper');
 var questionsWrapper = document.querySelector('.questionsWrapper');
+var finalScreen = document.querySelector('.finalScreen');
 
 // variables from array
 var question = document.querySelector('#question');
@@ -15,21 +16,21 @@ var answer4 = document.querySelector('#answer4');
 
 var userGuess = document.querySelectorAll('.answer');
 
-var totalSeconds = 75;
+var totalSeconds = 100;
 var secondsElapsed = 0;
 var counter = 0;
 var score = 0;
 
 var correctAnswer = questions[counter].answer;
 
-// pseudo code
 
 // user clicks 'start quiz' - initializes timer countdown
 startButton.addEventListener("click", function() {
     // change text to say countdown
     timeLeft.innerHTML = totalSeconds;
-    // hide intro wrapper
+    // hide intro & final wrapper
     intro.style.display = "none";
+    finalScreen.style.display = "none";
     // display questions wrapper
     questionsWrapper.style.display = "block";
     // start countdown
@@ -67,25 +68,25 @@ for (var i=0; i < userGuess.length; i++) {
   userGuess[i].addEventListener("click", function () {
     // track user input through if/else statement
     if (this.textContent == questions[counter].answer) {
-      console.log(true)
       highScores.textContent = score++;      
     } else {
-      console.log(false)
-      highScores.textContent = score--;
-      totalSeconds -= 5
+      highScores.textContent = score;
+      // time penalty
+      totalSeconds -= 5;
     }
     counter++;
-    displayQuestion();
+    displayQuestion(); 
   }); 
 }
 
-// score is calculated by time remaining. Answering quickly and correctly results in a higher score. Answering incorrectly results in a time penalty (for example, 15 seconds are subtracted from time remaining).
-// build into a correct guess / incorrect guess 
-// check variable for time - assign values to time remaining
-// try to shoot for a time penalty --> if incorrect guess decrement time counter
+// pseudo coding the rest since i wasn't able to complete
 
+// after for loop is completed, set 'questionsWrapper' div class to display none and the 'finalScreen' div to display block
 
+// print final score by returning score 
 
-// when time runs out or all questions are answered, the user is presented with final score and asked to enter initials - stored in localStorage
+// record user input field with their initials and score
+
+// store in local storage
 
 
